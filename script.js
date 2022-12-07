@@ -2,12 +2,14 @@ const formEl = document.querySelector(".form-div");
 const inputEl = document.querySelector("#city-input");
 
 getWeatherData = (city) => {
-  const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=imperial`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=imperial`;
   const weather = fetch(URL)
   return weather.then((response) => {
     return response.json()
   })
 };
+
+getWeatherData('london').then(data =>console.log(data))
 
 const dateAndTime = () => {
   const today = new Date();
@@ -57,18 +59,18 @@ const dateAndTime = () => {
 const currentDateTime = dateAndTime()
 
 const showWeatherData = (data) => {
-  document.getElementById("country").textContent = `${data["city"]["country"]}`;
-  document.getElementById("humidity").textContent = `${data["list"][0]["main"]["humidity"]}%`;
-  document.getElementById("wind").textContent = `${data["list"][0]["wind"]["speed"]}kmph`;
-  document.getElementById("pressure").textContent = `${data["list"][0]["main"]["pressure"]}`;
-  document.getElementById("temparature").textContent = `${data["list"][0]["main"]["temp"]}°`;
-  document.getElementById("feels_like").textContent = `feels like ${data["list"][0]["main"]["feels_like"]}°`;
-  document.getElementById("city-name").textContent = data["city"]["name"];
+  document.getElementById("country").textContent = `${data["sys"]["country"]}`;
+  document.getElementById("humidity").textContent = `${data["main"]["humidity"]}%`;
+  document.getElementById("wind").textContent = `${data["wind"]["speed"]}kmph`;
+  document.getElementById("pressure").textContent = `${data["main"]["pressure"]}`;
+  document.getElementById("temparature").textContent = `${data["main"]["temp"]}°`;
+  document.getElementById("feels_like").textContent = `feels like ${data["main"]["feels_like"]}°`;
+  document.getElementById("city-name").textContent = data["name"]
   document.getElementById("current_date_time").textContent = currentDateTime
-  const icon = `${data["list"][0]["weather"][0]["icon"]}`
+  const icon = `${data["weather"][0]["icon"]}`
   const weatherIcon = `http://openweathermap.org/img/w/${icon}.png`
   document.getElementById("weather-symbol").innerHTML = `<img src = "${weatherIcon}">`
-  document.getElementById("weather").textContent = `${data["list"][0]["weather"][0]["main"]}`
+  document.getElementById("weather").textContent = `${data["weather"][0]["main"]}`
 };
 
 formEl.addEventListener("submit", (e) => {
