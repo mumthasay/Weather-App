@@ -2,7 +2,7 @@ const formEl = document.querySelector(".form-div");
 const inputEl = document.querySelector("#city-input");
 
 getWeatherData = (city) => {
-  const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=86d57b010c803f4e6ecd7dd5fc272a14&units=imperial`;
+  const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=imperial`;
   const weather = fetch(URL)
   return weather.then((response) => {
     return response.json()
