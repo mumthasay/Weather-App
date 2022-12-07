@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+}
+
+.temp-col {
+  background: url("./pexels-anton-h-13407984.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.more-details-col {
+  background: #4e5052;
+}
+
+.heading-row{
+    height: 45%;
+}
+
+input[type="text"] {
+  color: white;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+input[type="text"]:focus, input[type="text"]:active{
+    outline: none;
+    background-color: #4e5052;
+}
+
+button{
+    border: none;
+    width: 60px;
+    height: 40px;
+}
+
+.form-div{
+padding-bottom: 90px;
+border-bottom:1px solid lightgrey;
+}
+
+.info-div{
+    border-bottom:1px solid lightgrey;
+}
+
+.info-div > p:nth-child(even){
+    color: #0a8fc4;
+}
+
+@media(min-width:750px) and (max-width:974px){
+    .temp-col{
+        background: url("./pexels-anton-h-13407984.jpg");
+        background-size: cover;
+        background-position-x:left ;
+    }
+}
+
+@media(max-width: 768px){
+    .heading-row{
+        height: 35px
+    }
+}
